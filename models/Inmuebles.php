@@ -19,6 +19,8 @@ namespace app\models;
  */
 class Inmuebles extends \yii\db\ActiveRecord
 {
+    public $precio_minimo;
+    public $precio_maximo;
     /**
      * {@inheritdoc}
      */
@@ -36,7 +38,7 @@ class Inmuebles extends \yii\db\ActiveRecord
             [['propietario_id'], 'required'],
             [['propietario_id', 'n_habitaciones', 'n_wc'], 'default', 'value' => null],
             [['propietario_id', 'n_habitaciones', 'n_wc'], 'integer'],
-            [['precio'], 'number'],
+            [['precio', 'precio_minimo'], 'number'],
             [['has_lavavajillas', 'has_garage', 'has_trastero'], 'boolean'],
             [['detalles'], 'string', 'max' => 255],
             [['propietario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Propietarios::className(), 'targetAttribute' => ['propietario_id' => 'id']],

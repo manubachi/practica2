@@ -9,6 +9,10 @@ use yii\grid\GridView;
 
 $this->title = 'Inmuebles';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJs(
+    "$('.btnTelefono').on('click', function() { alert($(this).data); });"
+);
 ?>
 <div class="inmuebles-index">
 
@@ -34,8 +38,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'has_garage:boolean:¿Tiene Garaje?',
             'has_trastero:boolean:¿Tiene Trastero?',
             'detalles',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' =>'{interesado}',
+                'buttons' => [
+                    'interesado' => function ($url, $model, $key){
+                        return Html::button('Estoy Interesado', ['class' =>'btnTelefono btn-sm btn-success', 'data' => $model->propietario->telefono]);
+                    },
+                ]
+            ],
         ],
     ]); ?>
+
+
 </div>

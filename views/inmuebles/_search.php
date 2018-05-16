@@ -19,19 +19,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'n_wc') ?>
 
-    <?= $form->field($model, 'precio') ?>
+    <?= $form->field($model, 'precio_minimo') ?>
 
-    <?php echo $form->field($model, 'has_lavavajillas')->checkbox() ?>
+    <?= $form->field($model, 'precio_maximo') ?>
 
-    <?php echo $form->field($model, 'has_lavavajillas')->checkbox() ?>
+    <?php echo $form->field($model, 'has_lavavajillas')->dropDownList([ null => "Indiferente", 1 => "Sí", 0 => "No"]) ?>
 
-    <?php echo $form->field($model, 'has_garage')->checkbox() ?>
+    <?php echo $form->field($model, 'has_garage')->dropDownList([ null => "Indiferente", 1 => "Sí", 0 => "No"]) ?>
 
-    <?php echo $form->field($model, 'has_trastero')->checkbox() ?>
+    <?php echo $form->field($model, 'has_trastero')->dropDownList([ null => "Indiferente", 1 => "Sí", 0 => "No"]) ?>
 
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
