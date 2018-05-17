@@ -9,10 +9,13 @@ use yii\grid\GridView;
 
 $this->title = 'Inmuebles';
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->registerJs(
-    "$('.btnTelefono').on('click', function() { alert($(this).data); });"
-);
+$js = <<< JS
+    $('.btnTelefono').on('click', function() {
+        $(this).text('Nº telefono del propietario : '+ $(this).data("telefono"));
+        $(this).removeClass('btnTelefono');
+    });
+JS;
+$this->registerJs($js);
 ?>
 <div class="inmuebles-index">
 
@@ -27,7 +30,7 @@ $this->registerJs(
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             //'id',
             //'propietario_id',
@@ -43,7 +46,10 @@ $this->registerJs(
                 'template' =>'{interesado}',
                 'buttons' => [
                     'interesado' => function ($url, $model, $key){
-                        return Html::button('Estoy Interesado', ['class' =>'btnTelefono btn-sm btn-success', 'data' => $model->propietario->telefono]);
+                        return Html::button('Estoy Interesado', [
+                            'class' =>'btnTelefono btn-sm btn-info',
+                            'data-telefono' => $model->propietario->telefono
+                        ]);
                     },
                 ]
             ],

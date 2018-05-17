@@ -13,7 +13,12 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]); ?>
+    ]);
+    $lista = [ '' => "Indiferente", 1 => "Sí", 0 => "No"];
+    ?>
+
+
+
 
     <?= $form->field($model, 'n_habitaciones') ?>
 
@@ -23,11 +28,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'precio_maximo') ?>
 
-    <?php echo $form->field($model, 'has_lavavajillas')->dropDownList([ null => "Indiferente", 1 => "Sí", 0 => "No"]) ?>
+    <?php echo $form->field($model, 'has_lavavajillas')->dropDownList($lista) ?>
 
-    <?php echo $form->field($model, 'has_garage')->dropDownList([ null => "Indiferente", 1 => "Sí", 0 => "No"]) ?>
+    <?php echo $form->field($model, 'has_garage')->dropDownList($lista) ?>
 
-    <?php echo $form->field($model, 'has_trastero')->dropDownList([ null => "Indiferente", 1 => "Sí", 0 => "No"]) ?>
+    <?php echo $form->field($model, 'has_trastero')->dropDownList($lista) ?>
 
 
     <div class="form-group">

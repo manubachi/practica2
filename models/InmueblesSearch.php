@@ -80,20 +80,16 @@ class InmueblesSearch extends Inmuebles
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'propietario_id' => $this->propietario_id,
-            'n_habitaciones' => $this->n_habitaciones,
-            'n_wc' => $this->n_wc,
-            'precio' => $this->precio,
-            'precio_minimo' => $this->getAttribute('precio_minimo'),
-            'precio_maximo' => $this->getAttribute('precio_maximo'),
+            //'n_habitaciones'   => $this->n_habitaciones,
+            //'n_wc'             => $this->n_wc,
             'has_lavavajillas' => $this->has_lavavajillas,
             'has_garage' => $this->has_garage,
             'has_trastero' => $this->has_trastero,
         ]);
-
-        $query->andFilterWhere(['>=', 'precio', $this->precio_minimo]);
-        $query->andFilterWhere(['<=', 'precio', $this->precio_maximo]);
+        $query->andFilterWhere(['>=', 'n_habitaciones', $this->n_habitaciones])
+        ->andFilterWhere(['>=', 'n_wc', $this->n_wc])
+        ->andFilterWhere(['>=', 'precio', $this->precio_minimo])
+        ->andFilterWhere(['<=', 'precio', $this->precio_maximo]);
 
         $query->andFilterWhere(['ilike', 'detalles', $this->detalles]);
 
